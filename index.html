@@ -255,17 +255,15 @@
       <div class="cards">
         <div class="card">
           <h3>Minimal-Signal Egocentric Reconstruction</h3>
-          <p class="sub">Ongoing · Multimodal video synthesis · AR/VR skill transfer</p>
-          <ul>
-            <li>Reconstructing egocentric video from a compact signal set: sparse exo/ego keyframes, head pose, gaze, hand-pose trajectories, and HOI masks.</li>
-            <li>Formulating an event-driven anchor-refresh and bitrate allocation policy across modalities to cut storage and transmission cost while preserving reconstruction and action-recognition quality.</li>
-          </ul>
+          <p class="sub">Ongoing &middot; Multimodal video synthesis &middot; AR/VR skill transfer</p>
+          <p class="lead"><b>How little information do we need to send to recreate an egocentric video?</b> Egocentric video is expensive to store and stream, but much of what matters about a first-person experience is where the head turned, where the eyes landed, and what the hands were doing.</p>
+          <p class="lead">I am reconstructing egocentric video from a <b>compact set of signals</b>: sparse exo/ego keyframes, head pose, gaze, hand-pose trajectories, and human-object interaction (HOI) masks. The second question is when to refresh. I am designing an <b>event-driven anchor-refresh and bitrate allocation policy</b> across these modalities, so that bits go where the action changes, with the goal of cutting storage and transmission cost while preserving reconstruction and action-recognition quality.</p>
         </div>
         <div class="card">
           <h3>Attention Where It Matters: Implicit Saliency Priors in Learned Image Compression</h3>
           <p class="sub">Submitted to IEEE TIP</p>
           <p class="lead"><b>What if a compression model learned where people actually look?</b> Instead of spending bits evenly across the whole image, it would invest them in the regions humans notice, while keeping everything else clean enough not to pull the eye away.</p>
-          <p class="lead">Our answer is <b>Saliency-Driven Attention (SDA)</b>: human gaze maps act as a soft prior that gently nudges a transformer's attention during training, rather than a hard rule about where bits must go. At test time it needs no gaze input and adds no deployment cost.</p>
+          <p class="lead">My answer is <b>Saliency-Driven Attention (SDA)</b>: human gaze maps act as a soft prior that gently nudges a transformer's attention during training, rather than a hard rule about where bits must go. At test time it needs no gaze input and adds no deployment cost.</p>
         <ul>
           <li>Up to <b>15&ndash;20% better LPIPS and DISTS</b> across three codecs (STF, TCM, SwinT) on Kodak, CLIC2020, and Tecnick-40.</li>
           <li><b>People noticed.</b> In a 30-participant study (216 image pairs each, matched bitrates), SDA reconstructions were preferred in <b>50.6%</b> of trials vs. 31.6% for baselines (p &lt; 0.001), and 1.9x more often than implicit-attention baselines at medium-to-high compression.</li>
@@ -275,7 +273,7 @@
           <h3>Cross-View Attention and Diffusion Synthesis for Maxillary Sinus Pathology Assessment</h3>
           <p class="sub">Submitted to IEEE TMI &middot; CBCT medical imaging</p>
           <p class="lead"><b>Radiologists rarely diagnose a sinus from a single plane. Why should an AI?</b> They read coronal and sagittal views together, yet most models look at only one, and key findings like odontogenic sinusitis are rare in the data.</p>
-          <p class="lead">We tackled both problems at once, using CBCT scans from 194 patients: a <b>bidirectional cross-view attention</b> model that lets the two views exchange information before predicting, and a <b>structure-guided latent diffusion model</b> (Stable Diffusion + LoRA) that draws realistic rare pathologies from anatomical masks to rebalance the training data.</p>
+          <p class="lead">I tackled both problems at once: a <b>bidirectional cross-view attention</b> model that lets the two views exchange information before predicting, and a <b>structure-guided latent diffusion model</b> (Stable Diffusion + LoRA) that draws realistic rare pathologies from anatomical masks to rebalance the training data.</p>
         <ul>
           <li><b>Two views beat one:</b> up to +10.8% classification accuracy over the coronal-only baseline and +4.1% over sagittal-only (CNN+ViT), with similar gains for YOLOv5 and ResNet18. Segmentation Dice rises from 0.712 to 0.829 (coronal) and from 0.745 to 0.845 (sagittal).</li>
           <li><b>The attention is the point:</b> swapping it for simple feature concatenation costs 2.8 points of accuracy and 3.3 points of macro F1.</li>
