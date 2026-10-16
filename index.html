@@ -273,20 +273,26 @@
         </div>
         <div class="card">
           <h3>Cross-View Attention and Diffusion Synthesis for Maxillary Sinus Pathology Assessment</h3>
-          <p class="sub">Submitted to IEEE TMI · CBCT medical imaging</p>
-          <ul>
-            <li>Structure-guided latent diffusion model (Stable Diffusion + LoRA, frozen VAE, DDIM) generating an expert-validated synthetic pathology dataset to address class imbalance across 194 patients.</li>
-            <li>Bidirectional cross-view attention across CNN+ViT, YOLOv5, and ResNet18 backbones improved classification accuracy by up to 10.8%.</li>
-            <li>Coronal-to-Sagittal mapper aligns synthetic coronal-only samples with live sagittal features via per-token MSE and cosine feature matching.</li>
-          </ul>
+          <p class="sub">Submitted to IEEE TMI &middot; CBCT medical imaging</p>
+          <p class="lead"><b>Radiologists rarely diagnose a sinus from a single plane. Why should an AI?</b> They read coronal and sagittal views together, yet most models look at only one, and key findings like odontogenic sinusitis are rare in the data.</p>
+          <p class="lead">We tackled both problems at once, using CBCT scans from 194 patients: a <b>bidirectional cross-view attention</b> model that lets the two views exchange information before predicting, and a <b>structure-guided latent diffusion model</b> (Stable Diffusion + LoRA) that draws realistic rare pathologies from anatomical masks to rebalance the training data.</p>
+        <ul>
+          <li><b>Two views beat one:</b> up to +10.8% classification accuracy over the coronal-only baseline and +4.1% over sagittal-only (CNN+ViT), with similar gains for YOLOv5 and ResNet18. Segmentation Dice rises from 0.712 to 0.829 (coronal) and from 0.745 to 0.845 (sagittal).</li>
+          <li><b>The attention is the point:</b> swapping it for simple feature concatenation costs 2.8 points of accuracy and 3.3 points of macro F1.</li>
+          <li><b>Synthetic scans a radiologist believed:</b> 887 generated images, judged anatomically plausible by a board-certified oral and maxillofacial radiologist, with no significant distribution gap from real scans (KID, p = 0.881). Augmenting with them helps most for the rarest pathologies.</li>
+          <li>Stays best on an independent external dataset without fine-tuning, with about 7&ndash;20% accuracy improvements across settings.</li>
+        </ul>
         </div>
         <div class="card">
-          <h3>Obstacle-Aware Point Cloud Compression for Remote Object Detection</h3>
-          <p class="sub">ICNC 2026 · LiDAR · 3D perception</p>
-          <ul>
-            <li>Lightweight, parallelizable Pillar-based Ground Removal (PGR) that drops non-informative ground points.</li>
-            <li>86.5 FPS with SECOND and PVT-SSD; up to 12.94% bitrate reduction with negligible mAP loss on Waymo Open Dataset and KITTI.</li>
-          </ul>
+          <h3>Can We Remove the Ground? Obstacle-aware Point Cloud Compression for Remote Object Detection</h3>
+          <p class="sub">ICNC 2026 &middot; LiDAR &middot; 3D perception</p>
+          <p class="lead"><b>A 64-line LiDAR streams about 128 Mbps, more than today's vehicle-to-infrastructure links can carry. So can we simply stop sending the ground?</b> It turns out 3D detectors lean on the ground more than you would expect, especially the points right below and around objects: removing all of it cost over 3% detection accuracy for cars.</p>
+          <p class="lead">So we kept the ground that matters. <b>Pillar-based Ground Removal (PGR)</b> is a lightweight, highly parallelizable algorithm that removes pillars that are likely ground, then restores the ones near obstacles, with no object detector needed.</p>
+        <ul>
+          <li>State-of-the-art detectors (SECOND, PVT-SSD) work equally well with <b>20&ndash;30% of points removed</b> on KITTI and Waymo Open Dataset, about 10% in dense urban frames and up to 50% on open roads.</li>
+          <li>On Waymo, PGR saves <b>9.34% to 12.94% of the bit rate</b> with mAP changes of at most 0.21%, and it beats other state-of-the-art ground removal methods on every tested object class.</li>
+          <li>Runs at <b>86.5 FPS</b> (11.6 ms per frame) on a single RTX 3090, leaving ample latency budget for detection.</li>
+        </ul>
         </div>
       </div>
     </section>
